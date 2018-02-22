@@ -6,26 +6,34 @@
  
 #include <iostream>
 
-
+namespace B
+{
+	void displayC();
+}
 namespace A
 {
+	int a=100;
 	void displayA()
 	{
 		std::cout << "displa" << std::endl;
+		B::displayC();
 	}
 }
-using namespace A;
-
-int cout(int b)
+namespace B
 {
-	return 1;
+	void displayB()
+	{
+		A::displayA();
+	}
+	void displayC()
+	{
+		std::cout << "B::displayC()" <<std::endl;
+	}
 }
+
+
 int main(void)
 {
-	int t;
-	displayA();
-	t=cout(1);
-	std::cout << "cout="<< cout(1) << std::endl;
-	std::cout << "cout="<< t << std::endl;
+	A::displayA();
 	return 0;
 }
